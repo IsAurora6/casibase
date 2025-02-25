@@ -89,6 +89,8 @@ func GetModelProvider(typ string, subType string, clientId string, clientSecret 
 		p, err = NewSiliconFlowProvider(subType, clientSecret, temperature, topP)
 	} else if typ == "Dummy" {
 		p, err = NewDummyModelProvider(subType)
+	} else if typ == "Ollama" {
+		p, err = NewOllamaModelProvider(clientSecret, providerUrl, subType, temperature, topP)
 	} else {
 		return nil, nil
 	}

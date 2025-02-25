@@ -58,6 +58,8 @@ func GetEmbeddingProvider(typ string, subType string, clientId string, clientSec
 		p, err = NewJinaEmbeddingProvider(subType, clientSecret)
 	} else if typ == "Dummy" {
 		p, err = NewDummyEmbeddingProvider(subType)
+	} else if typ == "Ollama" {
+		p, err = NewOllamaEmbeddingProvider(subType, clientSecret, providerUrl)
 	}
 
 	if err != nil {
