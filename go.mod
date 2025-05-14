@@ -1,6 +1,6 @@
 module github.com/casibase/casibase
 
-go 1.22.0
+go 1.23
 
 toolchain go1.23.6
 
@@ -41,6 +41,7 @@ require (
 	github.com/lib/pq v1.10.2
 	github.com/luthermonson/go-proxmox v0.2.1
 	github.com/madebywelch/anthropic-go/v2 v2.2.0
+	github.com/mark3labs/mcp-go v0.27.0
 	github.com/northes/go-moonshot v0.3.0
 	github.com/oschwald/geoip2-golang v1.11.0
 	github.com/pkg/errors v0.9.1
@@ -183,7 +184,7 @@ require (
 	github.com/skeema/knownhosts v1.2.1 // indirect
 	github.com/sourcegraph/conc v0.3.0 // indirect
 	github.com/spf13/afero v1.11.0 // indirect
-	github.com/spf13/cast v1.6.0 // indirect
+	github.com/spf13/cast v1.7.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/viper v1.18.2 // indirect
 	github.com/subosito/gotenv v1.6.0 // indirect
@@ -195,6 +196,7 @@ require (
 	github.com/vogo/logger v1.5.1 // indirect
 	github.com/volcengine/volc-sdk-golang v1.0.23 // indirect
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
+	github.com/yosida95/uritemplate/v3 v3.0.2 // indirect
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.1.0 // indirect
