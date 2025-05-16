@@ -2,7 +2,7 @@ module github.com/casibase/casibase
 
 go 1.23
 
-toolchain go1.23.6
+toolchain go1.24.0
 
 require (
 	chainmaker.org/chainmaker/pb-go/v2 v2.2.0

@@ -16,6 +16,7 @@ package object
 
 import (
 	"fmt"
+	"github.com/casibase/casibase/agent"
 	"strings"
 
 	"github.com/casibase/casibase/embedding"
@@ -449,6 +450,19 @@ func (p *Provider) GetSpeechToTextProvider() (stt.SpeechToTextProvider, error) {
 
 	if pProvider == nil {
 		return nil, fmt.Errorf("the STT provider type: %s is not supported", p.Type)
+	}
+
+	return pProvider, nil
+}
+
+func (p *Provider) GetAgentProvider() (agent.AgentClientInterface, error) {
+	pProvider, err := agent.NewAgentClient(p.Type, p.Text)
+	if err != nil {
+		return nil, err
+	}
+
+	if pProvider == nil {
+		return nil, fmt.Errorf("the agent provider type: %s is not supported", p.Type)
 	}
 
 	return pProvider, nil

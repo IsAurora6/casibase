@@ -147,6 +147,17 @@ func (c *ApiController) GetMessageAnswer() {
 		return
 	}
 
+	agentProvider, err := store.GetAgentProvider()
+	if err != nil {
+		c.ResponseErrorStream(message, err.Error())
+		return
+	}
+	AgentProviderObj, err := agentProvider.GetAgentProvider()
+	if err != nil {
+		c.ResponseErrorStream(message, err.Error())
+		return
+	}
+
 	knowledgeCount := store.KnowledgeCount
 	if knowledgeCount <= 0 {
 		knowledgeCount = 5
@@ -193,7 +204,7 @@ func (c *ApiController) GetMessageAnswer() {
 		return
 	}
 
-	modelResult, err := modelProviderObj.QueryText(question, writer, history, store.Prompt, knowledge)
+	modelResult, err := modelProviderObj.QueryText(question, writer, history, store.Prompt, knowledge, AgentProviderObj)
 	if err != nil {
 		if strings.Contains(err.Error(), "write tcp") {
 			c.ResponseError(err.Error())
