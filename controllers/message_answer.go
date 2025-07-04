@@ -167,10 +167,10 @@ func (c *ApiController) GetMessageAnswer() {
 
 	knowledgeCount := store.KnowledgeCount
 	if knowledgeCount <= 0 {
-		knowledgeCount = 5
+		knowledgeCount = 10
 	}
 
-	knowledge, vectorScores, embeddingResult, err := object.GetNearestKnowledge(store.Name, embeddingProvider, embeddingProviderObj, "admin", question, knowledgeCount)
+	knowledge, vectorScores, embeddingResult, err := object.GetNearestKnowledge(store.Name, store.SearchProvider, embeddingProvider, embeddingProviderObj, modelProvider, "admin", question, knowledgeCount)
 	if err != nil && err.Error() != "no knowledge vectors found" {
 		c.ResponseErrorStream(message, err.Error())
 		return
