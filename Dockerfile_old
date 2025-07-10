@@ -1,22 +1,17 @@
-FROM --platform=$BUILDPLATFORM riscv64/ubuntu:latest AS FRONT
-RUN apt-get update && apt-get install -y nodejs npm
-RUN npm install -g yarn
-
+FROM --platform=$BUILDPLATFORM node:18.19.0 AS FRONT
 WORKDIR /web
 COPY ./web .
-
-# 设置Node.js内存限制，避免在riscv64架构上的OOM问题
-ENV NODE_OPTIONS="--max-old-space-size=4144"
 RUN yarn install --frozen-lockfile --network-timeout 1000000 && yarn run build
 
-FROM --platform=$BUILDPLATFORM riscv64/golang:1.23.11-alpine3.21 AS BACK
+
+FROM --platform=$BUILDPLATFORM golang:1.23.6 AS BACK
 WORKDIR /go/src/casibase
 COPY . .
 RUN chmod +x ./build.sh
-RUN sh ./build.sh
+RUN ./build.sh
 
 
-FROM riscv64/alpine:latest AS STANDARD
+FROM alpine:latest AS STANDARD
 LABEL MAINTAINER="https://casibase.org/"
 ARG USER=casibase
 ARG TARGETOS
@@ -43,12 +38,14 @@ COPY --from=FRONT --chown=$USER:$USER /web/build ./web/build
 
 ENTRYPOINT ["/server"]
 
-FROM riscv64/ubuntu:latest AS db
+
+FROM debian:latest AS db
 RUN apt update \
     && apt install -y \
         mariadb-server \
         mariadb-client \
     && rm -rf /var/lib/apt/lists/*
+
 
 FROM db AS ALLINONE
 LABEL MAINTAINER="https://casibase.org/"
@@ -65,5 +62,6 @@ COPY --from=BACK /go/src/casibase/data ./data
 COPY --from=BACK /go/src/casibase/docker-entrypoint.sh /docker-entrypoint.sh
 COPY --from=BACK /go/src/casibase/conf/app.conf ./conf/app.conf
 COPY --from=FRONT /web/build ./web/build
+
 ENTRYPOINT ["/bin/bash"]
 CMD ["/docker-entrypoint.sh"]
