@@ -103,6 +103,7 @@
     "The response has been interrupted. Please do not refresh the page during responding.": "Die Antwort wurde unterbrochen. Bitte aktualisieren Sie die Seite nicht, während die Antwort erfolgt.",
     "Thinking": "Denkprozess",
     "Token count": "Token-Anzahl",
+    "Tool calls": "Tool calls",
     "Type message here": "Nachricht hier eingeben",
     "User1": "Benutzer1",
     "User1 - Tooltip": "Chat-Ersteller",
@@ -231,6 +232,7 @@
     "Failed to decode audio data": "Audio-Daten decodieren fehlgeschlagen",
     "Failed to delete": "Löschen fehlgeschlagen",
     "Failed to deploy": "Bereitstellung fehlgeschlagen",
+    "Failed to execute": "Failed to execute",
     "Failed to get": "Abrufen fehlgeschlagen",
     "Failed to query": "Failed to query",
     "Failed to redirect": "Weiterleitung fehlgeschlagen",
@@ -377,6 +379,7 @@
     "Successfully deployed": "Successfully deployed",
     "Successfully disliked": "Erfolgreich nicht gemocht",
     "Successfully downloaded": "Erfolgreich heruntergeladen",
+    "Successfully executed": "Successfully executed",
     "Successfully liked": "Erfolgreich gemocht",
     "Successfully logged in": "Erfolgreich angemeldet",
     "Successfully saved": "Erfolgreich gespeichert",
@@ -440,7 +443,12 @@
     "{total} in total": "{total} insgesamt"
   },
   "graph": {
-    "Edit Graph": "Edit Graph"
+    "Circular": "环形",
+    "Edit Graph": "Edit Graph",
+    "Force": "力导向",
+    "Layout": "布局",
+    "Layout - Tooltip": "图布局类型",
+    "None": "无"
   },
   "hospital": {
     "Edit Hospital": "Krankenhaus bearbeiten",
@@ -499,6 +507,7 @@
     "Doctor": "Arzt",
     "Doctor - Tooltip": "Behandelnder Arzt",
     "Doctors": "Ärzte",
+    "Doctors - Tooltip": "Doctors - Tooltip",
     "Email": "E-Mail",
     "Email - Tooltip": "E-Mail",
     "Expired time": "Ablaufzeit",
